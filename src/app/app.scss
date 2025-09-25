@@ -40,3 +40,96 @@
       padding: 5px 0;
       border-bottom: 1px solid #dee2e6;
     }
+
+
+    sub-app {
+      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      font-family: Arial, sans-serif;
+    }
+    .status-indicator {
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      background-color: #dc3545;
+      color: white;
+      text-align: center;
+    }
+    .status-indicator.connected {
+      background-color: #28a745;
+    }
+    .request-auth-btn, .action-btn, .submit-btn {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+    }
+    .submit-btn:disabled {
+      background-color: #6c757d;
+      cursor: not-allowed;
+    }
+    .user-info {
+      background-color: #e7f3ff;
+      padding: 15px;
+      border-radius: 5px;
+      margin: 10px 0;
+    }
+    .form-section {
+      margin: 20px 0;
+    }
+    .form-card {
+      background-color: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      border: 1px solid #dee2e6;
+    }
+    .form-card h4 {
+      margin-top: 0;
+      color: #495057;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    .form-control {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+    }
+    .form-control.invalid {
+      border-color: #dc3545;
+    }
+    .error-message {
+      color: #dc3545;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+    input[type="checkbox"] {
+      margin-right: 8px;
+    }
+    .communication-log {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-radius: 5px;
+    }
+    .log-entry {
+      padding: 5px 0;
+      border-bottom: 1px solid #dee2e6;
+    }

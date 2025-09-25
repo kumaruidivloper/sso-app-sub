@@ -1,38 +1,5 @@
-<div class="sub-app">
-      <h1>Sub Application</h1>
-      
-      <div class="status-section">
-        <div class="status-indicator" [class.connected]="isConnectedToMain">
-          {{ isConnectedToMain ? 'Connected to Main App' : 'Not Connected' }}
-        </div>
-        @if(!isLoggedIn) {
-          <div class="auth-status">
-          <p>Not authenticated</p>
-          <button (click)="requestAuthStatus()" class="request-auth-btn">
-            Request Auth from Main App
-          </button>
-        </div>
-        }
-        
-        @if(isLoggedIn) {
-        <div class="user-info">
-          <h2>Authenticated User</h2>
-          <p><strong>Name:</strong> {{ userInfo?.name }}</p>
-          <p><strong>Email:</strong> {{ userInfo?.email }}</p>
-          <button (click)="performAction()" class="action-btn">
-            Perform Authenticated Action
-          </button>
-        </div>
-        }
-        
-      </div>
-      
-      <div class="communication-log">
-        <h3>Communication Log:</h3>
-        @for (log of communicationLogs; track log) {
-          <div class="log-entry">
-            {{ log }}
-          </div>
-        }
-      </div>
-    </div>
+<h1>{{message() | json}}</h1>
+
+<button (click)="sendMessageToApp1()">Send Message To App1</button>
+
+<h1>Counter: {{counter() }}</h1>
