@@ -27,14 +27,30 @@ export class AppComponent implements OnInit, OnDestroy {
     if (event.data?.type === 'GREETING_FROM_APP1') {
         this.message.set(event.data);
         console.log('Message received in App2:', event.data);
-        this.counter.set(this.counter() + 1);
+        this.conterHandler(event.data.process)
     }
   };
 
-  sendMessageToApp1() {
+  sendMessageToApp1(value: any) {
   window.opener?.postMessage(
-    { type: 'GREETING_FROM_APP2', payload: 'Hello back from App2!' },
+    { type: 'GREETING_FROM_APP2', payload: 'Hello back from App2!', process: value },
     'http://localhost:4200'
   );
+}
+
+conterHandler(value: any) {
+  if(value === 'minus') {
+    this.counter.set(this.counter() - 1);
+  } else if(value === 'pluse') {
+    this.counter.set(this.counter() + 1);
+  }
+}
+
+incrementApp1(value: any) {
+    this.sendMessageToApp1(value);
+}
+
+decrementApp1(value: any) {
+  this.sendMessageToApp1(value);
 }
 }

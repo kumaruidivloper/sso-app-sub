@@ -1,5 +1,10 @@
 <h1>{{message() | json}}</h1>
 
-<button (click)="sendMessageToApp1()">Send Message To App1</button>
+<button (click)="sendMessageToApp1('message')">Send Message To App1</button>
 
-<h1>Counter: {{counter() }}</h1>
+
+<div style="border: solid 1px #000; text-align: center; margin-top: 10px; padding: 10px; background-color: bisque;">
+  <button (click)="incrementApp1('pluse')">+</button>
+  <h1>Counter: {{counter() }}</h1>
+  <button (click)="decrementApp1('minus')">-</button>
+</div>
