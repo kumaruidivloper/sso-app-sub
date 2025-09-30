@@ -1,6 +1,6 @@
 <h1>{{message() | json}}</h1>
 
-<button (click)="sendMessageToApp1('message')">Send Message To App1</button>
+<button (click)="sharedService.sendMessageToApp1('message')">Send Message To App1</button>
 
 
 <div style="border: solid 1px #000; text-align: center; margin-top: 10px; padding: 10px; background-color: bisque;">
@@ -8,3 +8,5 @@
   <h1>Counter: {{counter() }}</h1>
   <button (click)="decrementApp1('minus')">-</button>
 </div>
+
+<router-outlet></router-outlet>
