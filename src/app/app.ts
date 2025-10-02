@@ -1,24 +1,28 @@
-import { Component, OnInit, OnDestroy, inject, signal } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject, signal, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet, Router } from '@angular/router';
 import { SharedService } from './services/shared-service';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, MatButtonModule],
+  imports: [CommonModule, RouterOutlet, MatButtonModule, MatIconModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class AppComponent implements OnInit, OnDestroy {
    message = signal<any>('Waiting for message... from App1');
    counter = signal<number>(0);
+   @ViewChild('myAppSize') myAppSize!: ElementRef<HTMLInputElement>;
 
   constructor(
     private router: Router,
     public sharedService: SharedService
-  ) {}
+  ) {
+    
+  }
 
   ngOnInit() {
     window.addEventListener('message', this.handleMessage);
@@ -34,17 +38,20 @@ export class AppComponent implements OnInit, OnDestroy {
         this.message.set(event.data);
         console.log('Message received in App2:', event.data);
         this.conterHandler(event.data.process)
-        this.openForms(event.data.process)
-
+        if(event.data.process === 'first' ||  event.data.process === 'second' || event.data.process === 'third') {
+          this.openForms(event.data.process)
+        }
+        if(event.data.resize) {
+          setTimeout(() => {
+            this.windowSize(null);
+          }, 400)
+        }
     }
   };
 
-//   sendMessageToApp1(value: any) {
-//   window.opener?.postMessage(
-//     { type: 'GREETING_FROM_APP2', payload: 'Hello back from App2!', process: value },
-//     'http://localhost:4200'
-//   );
-// }
+  windowSize(value: any) {
+    window.parent.postMessage({ type: 'FORM_SIZE', payload: 'Hello back from App2!', process: value, iframeSize: this.myAppSize.nativeElement.scrollHeight}, 'http://localhost:4200');
+  }
 
 conterHandler(value: any) {
   if(value === 'minus') {
@@ -60,9 +67,11 @@ openForms(value:any) {
 
 incrementApp1(value: any) {
     this.sharedService.sendMessageToApp1(value);
+    this.windowSize('pluse')
 }
 
 decrementApp1(value: any) {
   this.sharedService.sendMessageToApp1(value);
+  this.windowSize('minus')
 }
 }
