@@ -33,17 +33,23 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   handleMessage = (event: MessageEvent) => {
+    const expectedPath = '/sso-app-main/';
+  // if (event.origin + expectedPath  !== 'https://kumaruidivloper.github.io/sso-app-main/') return;
     if (event.origin !== 'http://localhost:4200') return; // ✅ security check
     if (event.data?.type === 'GREETING_FROM_APP1') {
         this.message.set(event.data);
         console.log('Message received in App2:', event.data);
         this.conterHandler(event.data.process)
         if(event.data.process === 'first' ||  event.data.process === 'second' || event.data.process === 'third') {
-          this.openForms(event.data.process)
+          this.openForms(event.data.process);
+           setTimeout(() => {
+          this.windowSize(event.data.process);
+           },400)
         }
-        if(event.data.resize) {
+        if(event.data.typeOfComm === '2') {
           setTimeout(() => {
             this.windowSize(null);
+            this.sharedService.appType(event.data.resize, this.myAppSize.nativeElement.scrollHeight);
           }, 400)
         }
     }

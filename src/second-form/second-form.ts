@@ -28,8 +28,12 @@ export class SecondForm {
 
   submitForm() {
     if (this.secondForm.valid) {
-      console.log(this.secondForm.value); 
-      this.sharedService.sendMessageToApp1(this.secondForm.value);
+      if(this.sharedService.typeOfcommunication === 'iframe') {
+        window.parent.postMessage({ type: 'FORM_SIZE', payload: 'Hello back from App2!', process: this.secondForm.value, iframeSize: this.sharedService.size}, 'http://localhost:4200');
+      } else {
+        console.log(this.secondForm.value); 
+        this.sharedService.sendMessageToApp1(this.secondForm.value);
+      }
     } 
   }
 }
