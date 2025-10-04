@@ -27,7 +27,7 @@ export class FirstForm {
   submitForm() {
     if (this.firstForm.valid) {
       if(this.sharedService.typeOfcommunication === 'iframe') {
-        window.parent.postMessage({ type: 'FORM_SIZE', payload: 'Hello back from App2!', process: this.firstForm.value, iframeSize: this.sharedService.size}, 'http://localhost:4200');
+        window.parent.postMessage({ type: 'FORM_SIZE', payload: 'Hello back from App2!', process: this.firstForm.value, iframeSize: this.sharedService.size}, 'https://kumaruidivloper.github.io/sso-app-main/');
       } else {
         console.log(this.firstForm.value); 
         this.sharedService.sendMessageToApp1(this.firstForm.value);

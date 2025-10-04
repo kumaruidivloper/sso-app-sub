@@ -11,12 +11,11 @@ export class SharedService {
     if(this.typeOfcommunication === 'tab') {
       window.opener?.postMessage(
       { type: 'GREETING_FROM_APP2', payload: 'Hello back from App2!', process: value },
-      'http://localhost:4200'
-      // 'https://kumaruidivloper.github.io/sso-app-main/'
-      
+      'https://kumaruidivloper.github.io/sso-app-main/'
+      // 'http://localhost:4200'
     );
     } else {
-      window.parent.postMessage({ type: 'FORM_SIZE', payload: 'Hello back from App2!', process: value, iframeSize: this.size}, 'http://localhost:4200');
+      window.parent.postMessage({ type: 'FORM_SIZE', payload: 'Hello back from App2!', process: value, iframeSize: this.size}, 'https://kumaruidivloper.github.io/sso-app-main/');
     }
     
   }

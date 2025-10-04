@@ -34,8 +34,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   handleMessage = (event: MessageEvent) => {
     const expectedPath = '/sso-app-main/';
-  // if (event.origin + expectedPath  !== 'https://kumaruidivloper.github.io/sso-app-main/') return;
-    if (event.origin !== 'http://localhost:4200') return; // ✅ security check
+  if (event.origin + expectedPath  !== 'https://kumaruidivloper.github.io/sso-app-main/') return;
+    // if (event.origin !== 'http://localhost:4200') return; // ✅ security check
     if (event.data?.type === 'GREETING_FROM_APP1') {
         this.message.set(event.data);
         console.log('Message received in App2:', event.data);
@@ -56,7 +56,7 @@ export class AppComponent implements OnInit, OnDestroy {
   };
 
   windowSize(value: any) {
-    window.parent.postMessage({ type: 'FORM_SIZE', payload: 'Hello back from App2!', process: value, iframeSize: this.myAppSize.nativeElement.scrollHeight}, 'http://localhost:4200');
+    window.parent.postMessage({ type: 'FORM_SIZE', payload: 'Hello back from App2!', process: value, iframeSize: this.myAppSize.nativeElement.scrollHeight}, 'https://kumaruidivloper.github.io/sso-app-main/');
   }
 
 conterHandler(value: any) {

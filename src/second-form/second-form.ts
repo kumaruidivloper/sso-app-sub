@@ -29,7 +29,7 @@ export class SecondForm {
   submitForm() {
     if (this.secondForm.valid) {
       if(this.sharedService.typeOfcommunication === 'iframe') {
-        window.parent.postMessage({ type: 'FORM_SIZE', payload: 'Hello back from App2!', process: this.secondForm.value, iframeSize: this.sharedService.size}, 'http://localhost:4200');
+        window.parent.postMessage({ type: 'FORM_SIZE', payload: 'Hello back from App2!', process: this.secondForm.value, iframeSize: this.sharedService.size}, 'https://kumaruidivloper.github.io/sso-app-main/');
       } else {
         console.log(this.secondForm.value); 
         this.sharedService.sendMessageToApp1(this.secondForm.value);
