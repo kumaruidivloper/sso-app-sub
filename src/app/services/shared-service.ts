@@ -10,7 +10,7 @@ export class SharedService {
   sendMessageToApp1(value: any) {
     if(this.typeOfcommunication === 'tab') {
       window.opener?.postMessage(
-      { type: 'GREETING_FROM_APP2', payload: 'Hello back from App2!', process: value },
+      { type: 'GREETING_FROM_APP2', payload: 'Hello back from App2!', process: value, iframeSize: null },
       'http://localhost:4200'
       // 'https://kumaruidivloper.github.io/sso-app-main/'
       
