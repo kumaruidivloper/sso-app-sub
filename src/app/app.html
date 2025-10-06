@@ -3,12 +3,14 @@
   <div style="text-align: center;">
 <!-- <button (click)="sharedService.sendMessageToApp1('message')" style="padding: 8px; margin-right: 10px;">Send Message To App1</button> -->
 <button matButton="tonal" (click)="sharedService.sendMessageToApp1('message')" style="margin-right: 20px;">Send Message to App1</button>
+<mat-card appearance="outlined" class="card-style">
+<!-- <div style="border: solid 1px #000; text-align: center; margin-top: 10px; padding: 20px 10px; background-color: bisque; margin-bottom: 20px;"> -->
+  <button matMiniFab (click)="decrementApp1('minus')"><mat-icon>remove</mat-icon></button>
+  <h1>Counter: {{counter() }}</h1>
+  <button matMiniFab (click)="incrementApp1('pluse')"><mat-icon>add</mat-icon></button>
+<!-- </div> -->
+</mat-card>
 
-<div style="border: solid 1px #000; text-align: center; margin-top: 10px; padding: 20px 10px; background-color: bisque; margin-bottom: 20px;">
-  <button style="display: inline-block;" matMiniFab (click)="decrementApp1('minus')"><mat-icon>remove</mat-icon></button>
-  <h1 style="display: inline-block; margin: 0 15px;">Counter: {{counter() }}</h1>
-  <button matMiniFab (click)="incrementApp1('pluse')" style="display: inline-block"><mat-icon>add</mat-icon></button>
-</div>
 
 
 <div style="text-align: center; width: 50%; padding: 10px; border: solid 1px #000; margin: 0 auto; border-radius:20px;">
